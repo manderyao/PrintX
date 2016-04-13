@@ -1,0 +1,15 @@
+Installation and compilation instructions are straightforward: download the project and run with 32 bit release configuration in Visual Studio 2013 or later. All external dependencies are included.
+The code is only tested in Windows but  it should also be possible to extend to Linux and Max OS with a reasonable amount of work.
+
+Directories
+===============================================
+PrintX:				core part of the code, implementation of multiple 3D modeling features, write to .lib
+Demo_MeshSeg:		demo of mesh segmentation, dependent on PrintX
+Demo_Shell:			demo of shell generation, dependent on PrintX
+Demo_Partitioning:	demo of 3D partitioning, dependent on PrintX
+include:			OpenGL and SDFGen header files
+libs:				.lib and .dll files
+model:				test models
+doc:				documents
+
+

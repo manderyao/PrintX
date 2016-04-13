@@ -1,0 +1,6 @@
+1.0.0
+
+	- Initial release
+	- Implemented level-set-based partitioning of 3D models, as well as shell generation
+	- Added Demos: manual segment of a surface mesh, shell construction, partitioning
+	
