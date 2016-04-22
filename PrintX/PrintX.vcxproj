@@ -19,6 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\off2citygml\CommonGeomFunctions.h" />
+    <ClInclude Include="..\include\off2citygml\CommonWriters.h" />
+    <ClInclude Include="..\include\off2citygml\FileIO.h" />
+    <ClInclude Include="..\include\off2citygml\KeepSemantics.h" />
+    <ClInclude Include="..\include\off2citygml\ManifoldFix.h" />
+    <ClInclude Include="..\include\off2citygml\MergeCoplanarFacets.h" />
+    <ClInclude Include="..\include\off2citygml\Minkowski.h" />
+    <ClInclude Include="..\include\off2citygml\SnapSemantics.h" />
+    <ClInclude Include="..\include\off2citygml\stdafx.h" />
+    <ClInclude Include="..\include\off2citygml\WriteCityGML.h" />
+    <ClInclude Include="meshOp.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="colorManager.h" />
     <ClInclude Include="configFile.h" />
@@ -38,6 +49,15 @@
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\off2citygml\CommonGeomFunctions.cpp" />
+    <ClCompile Include="..\include\off2citygml\CommonWriters.cpp" />
+    <ClCompile Include="..\include\off2citygml\FileIO.cpp" />
+    <ClCompile Include="..\include\off2citygml\KeepSemantics.cpp" />
+    <ClCompile Include="..\include\off2citygml\ManifoldFix.cpp" />
+    <ClCompile Include="..\include\off2citygml\MergeCoplanarFacets.cpp" />
+    <ClCompile Include="..\include\off2citygml\Minkowski.cpp" />
+    <ClCompile Include="..\include\off2citygml\SnapSemantics.cpp" />
+    <ClCompile Include="..\include\off2citygml\WriteCityGML.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="configFile.cpp" />
     <ClCompile Include="levelset.cpp" />
@@ -96,6 +116,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\libs\x86\Release</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\libs\x64\Release</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -142,7 +165,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SDFGen;$(ProjectDir)include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include;$(SolutionDir)\include\SDFGen;$(CGAL_DIR)\include;$(CGAL_DIR)\build\include;$(CGAL_DIR)\auxiliary\gmp\include;$(BOOST_DIR)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_DEPRECATE </PreprocessorDefinitions>
     </ClCompile>
     <Link>

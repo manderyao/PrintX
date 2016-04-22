@@ -1,4 +1,4 @@
-Installation and compilation instructions are straightforward: download the project and run with 32 bit release configuration in Visual Studio 2013 or later. All external dependencies are included.
+Installation and compilation instructions are straightforward: download the project and run with 64 bit release (for 32 bit please add corresponding .lib files) configuration in Visual Studio 2013 or later. CGAL and BOOST are required for successful compilation of the library.
 The code is only tested in Windows but  it should also be possible to extend to Linux and Max OS with a reasonable amount of work.
 
 Directories
@@ -7,8 +7,8 @@ PrintX:				core part of the code, implementation of multiple 3D modeling feature
 Demo_MeshSeg:		demo of mesh segmentation, dependent on PrintX
 Demo_Shell:			demo of shell generation, dependent on PrintX
 Demo_Partitioning:	demo of 3D partitioning, dependent on PrintX
-include:			OpenGL and SDFGen header files
-libs:				.lib and .dll files
+include:			header files of external dependencies
+libs:				.lib and .dll files of external dependencies
 model:				test models
 doc:				documents
 
