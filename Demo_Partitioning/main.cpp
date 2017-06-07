@@ -13,6 +13,8 @@ int main(int argc, char **argv)
 		printf("Error: please run Demo_MeshSeg first to generate a .seg file or provide yours!\n");
 		return -1;
 	}
+	
+	printf("Successfully loaded ../model/armadillo.seg.\n");
 
 	LevelsetMulti lvs(mesh, 1.5, false);	
 	printf("Level set initialized\n");
