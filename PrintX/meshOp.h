@@ -82,14 +82,14 @@ namespace PRINTX_LIB
 
 
 	// build NefPoly from vertices and faces
-	static bool loadNefPoly(Nef_polyhedron &nef_poly, double *verts, int n_verts, int *tris, int n_tris)
+	static bool loadNefPoly(Nef_polyhedron &nef_poly, double *verts, int n_verts, int *tris, int n_tris, bool regular, bool normal, bool useDefault)
 	{
 		Polyhedron poly;
 		PolyhedronBuilder<Polyhedron::HalfedgeDS> builder_in(verts, n_verts, tris, n_tris);
 		poly.delegate(builder_in);
 		
 		//nef_poly = Nef_polyhedron(poly);
-		return polyhe2nef(poly, nef_poly);	 // safe
+		return polyhe2nef(poly, nef_poly, regular, normal, useDefault);	 // safe
 	}
 
 	// export NefPoly to vertices and faces

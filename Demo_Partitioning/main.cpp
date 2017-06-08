@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	
 	printf("Successfully loaded ../model/armadillo.seg.\n");
 
-	LevelsetMulti lvs(mesh, 1.5, false);	
+	LevelsetMulti lvs(mesh, 2.0, false);	
 	printf("Level set initialized\n");
 	for (int i = 0; i < 30; i++)
 	{	
@@ -24,23 +24,27 @@ int main(int argc, char **argv)
 		printf("Level set smooth Iter: %d\n", i);
 	}
 
-	printf("Start marching cubes\n");
 	std::vector<double> *mc_verts = new std::vector<double>[lvs.num_clusters];
 	std::vector<int> *mc_faces = new std::vector<int>[lvs.num_clusters];
 	lvs.marchingCubes(mc_verts, mc_faces);
+	printf("Done marching cubes\n");
 
 	Nef_polyhedron nefpoly;
-	loadNefPoly(nefpoly, mesh.verts, mesh.n_verts, mesh.faces, mesh.n_faces);
+	loadNefPoly(nefpoly, mesh.verts, mesh.n_verts, mesh.faces, mesh.n_faces, true, true, true);
+	printf("Loaded the surf mesh as a NefPoly\n");
 	for (int i = 0; i < lvs.num_clusters; i++)
 	{
-		printf("Build piece %d\n", i);
 		Nef_polyhedron nefpoly1, nefpoly2;
-		loadNefPoly(nefpoly1, &mc_verts[i][0], mc_verts[i].size() / 3, &mc_faces[i][0], mc_faces[i].size() / 3);		
+		loadNefPoly(nefpoly1, &mc_verts[i][0], mc_verts[i].size() / 3, &mc_faces[i][0], mc_faces[i].size() / 3, true, true, true);
+		printf("Loaded the piece enclosure as a NefPoly\n");
 		boolOperator(nefpoly1, nefpoly, nefpoly2, BOOL_INTERSECT);
 
-		printf("Write piece %d to .OBJ\n", i);
 		if (cleanNefPoly(nefpoly2))
-			writeNefPoly2OBJ(nefpoly2, std::string("../model/armadillo_piece") + std::to_string(i) + ".obj");
+		{
+			std::string dest = std::string("../model/armadillo_piece") + std::to_string(i) + ".obj";
+			writeNefPoly2OBJ(nefpoly2, dest);
+			printf("Write piece %d to %s\n", i, dest.c_str());
+		}
 		else
 			printf("Fail to clean piece %d!!!\n", i);
 	}
