@@ -8,7 +8,7 @@ The library was only tested on Windows 7 & 8 & 10. However, it should also be po
 Miaojun Yao (yao.210@osu.edu)
 
 ### Version
-1.0.1
+1.1
 
 ### License
 MIT
